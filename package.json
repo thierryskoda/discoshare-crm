@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "postinstall": "webpack",
-    "start": "webpack --watch --progress --debug",
-    "build": "webpack --progress"
+    "build": "webpack --progress",
+  	"start": "node ./server.js"
   },
   "author": "",
   "license": "ISC",
