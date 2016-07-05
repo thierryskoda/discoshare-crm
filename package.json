@@ -1,5 +1,3 @@
-//"start": "webpack --watch --progress --debug",
-//"build": "webpack --config ./webpack.prod.config.js --progress --colors",
 {
   "name": "sales-app",
   "version": "1.0.0",
