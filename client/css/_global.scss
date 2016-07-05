@@ -1,0 +1,136 @@
+body {
+    font-family : 'brandon_text_regular';
+}
+
+ui-view {
+
+    &.ng-enter {
+        animation: fadeIn 0.5s ease;
+    }
+}
+
+.app_wrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.main {
+    display: flex;
+    flex-direction: row;
+    flex: 1 1 auto;
+}
+
+button {
+    background-color : $navy;
+    padding : 0.6em;
+    color : #ffffff;
+    text-shadow : none;
+    outline: none;
+    border: none;
+    font-size : 1.2em;
+    cursor: pointer;
+}
+
+.content {
+	margin-top: $header-height;
+    flex: 1 1 auto;
+    padding: 0px 10px;
+    margin-left: 0px;
+
+    @media (min-width: $small-screen) {
+        margin-left : $nav-width;
+        padding: 0px;
+    }
+
+    &__header {
+        display :flex;
+        flex-wrap: wrap;
+
+        @media (min-width: $small-screen) {
+            padding: 50px;
+        }
+
+        &__left {
+            /*float: left;*/
+            /*width: 50%;*/
+            padding: 10px 0px;
+
+            &__title {
+                font-size: 30px;
+            }
+
+            &__date {
+                font-size: 15px;
+            }
+        }
+
+        &__right {
+            /*float: right;*/
+            /*width: 50%;*/
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            padding: 10px 0px;
+            justify-content: space-between;
+            width: 100%;
+
+            &__full_routes {
+                font-size: 15px;
+            }
+        }
+    }
+
+    &__body {
+        .routes_table {
+            /*display: flex;*/
+            /*flex-direction: column;*/
+
+            .ui-grid-top-panel {
+                background-color: $blue;
+                padding: 10px 0px;
+
+                .ui-grid-header-cell {
+                    border: none;
+                }
+            }
+
+            &__header {
+                padding : 10px 0px;
+                background-color: $blue;
+                display: flex;
+                justify-content: space-around;
+
+                &__items {
+                    color: #ffffff;
+                }
+            }
+
+            &__row {
+                display:flex;
+                height: 30px;
+                align-items: center;
+                justify-content : space-around;
+
+                &--gray {
+                    background-color : $gray;
+                }
+            }
+        }
+
+        &--with_padding {
+            padding : 0em 3em;
+        }
+    }
+}
+
+
+a:link, a:visited, a:active, a:hover, a:focus {
+    text-transform: none !important;
+    text-decoration: none !important;
+    outline: none !important;
+}
+
+a, button {
+  cursor: pointer;
+}
+

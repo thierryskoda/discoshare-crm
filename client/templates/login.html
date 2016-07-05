@@ -1,0 +1,26 @@
+<div class="login">
+	<form class="login__wrapper">
+		<div class="form_group">
+			<label>Email</label>
+			<input type="email" name="" ng-model="user.email">
+		</div>
+		<div class="form_group">
+			<label>Password</label>
+			<input type="password" name="" ng-model="user.password">
+		</div>
+
+        <!--error-->
+        <div class="form-group has-error">
+          <p class="help-block" ng-show="form.email.$error.required && form.password.$error.required && submitted">
+             Please enter your email and password.
+          </p>
+          <p class="help-block" ng-show="form.email.$error.email && submitted">
+             Please enter a valid email.
+          </p>
+
+          <p class="help-block">{{ errors.other }}</p>
+        </div>
+
+		<button ng-click="login(user);"> Login </button>
+	</form>
+</div>

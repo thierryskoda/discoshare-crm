@@ -1,0 +1,29 @@
+<div class="content__body">
+  <table class="responstable">
+        <tr>
+            <th> Name </th>
+            <th> Email</th>
+            <th> Location </th>
+            <th> Term </th>
+            <th> Sales </th>
+            <th> Notes </th>
+            <th> Action </th>
+        </tr>
+
+        <tr ng-repeat="user in users">
+            <td>{{user.name}}</td>
+            <td>{{user.email}}</td>
+            <td>{{user.location}}</td>
+            <td>{{user.term}}</td>
+            <td>{{user.number_of_sales}}</td>
+            <td>
+                <span ng-show="user.notes.length > 0">{{user.notes}}</span>
+                <span ng-show="user.notes.length === 0"> <em>No notes</em> </span>
+            </td>
+            <td>
+                <button ng-click="delete_user(user);">Delete</button>
+                <button ng-click="goTo('main.admin.edit', {user_id: user._id})"> Edit </button>
+            </td>
+        </tr>
+    </table>
+</div>

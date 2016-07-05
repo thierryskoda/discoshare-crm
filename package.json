@@ -1,0 +1,49 @@
+{
+  "name": "sales-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "postinstall": "webpack",
+    "start": "webpack --watch --progress --debug",
+    "build": "webpack --progress"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.6",
+    "angular-animate": "^1.5.7",
+    "angular-aria": "^1.5.7",
+    "angular-cookies": "^1.5.7",
+    "angular-environment": "^1.0.4",
+    "angular-google-maps": "^2.3.3",
+    "angular-modal-service": "^0.10.1",
+    "angular-resource": "^1.5.7",
+    "angular-toastr": "^1.7.0",
+    "angular-translate": "^2.11.0",
+    "angular-ui-bootstrap": "^1.3.3",
+    "angular-ui-grid": "^3.2.2",
+    "angular-ui-router": "^0.3.1",
+    "angular-validation": "^1.4.1",
+    "autoprefixer": "^6.3.6",
+    "babel-core": "^6.9.1",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-runtime": "^6.9.0",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-runtime": "^6.9.2",
+    "css-loader": "^0.23.1",
+    "express": "^4.14.0",
+    "extract-text-webpack-plugin": "^1.0.1",
+    "html-loader": "^0.4.3",
+    "ng-table": "^1.0.0",
+    "ngmap": "^1.17.1",
+    "node-sass": "^3.7.0",
+    "postcss-loader": "^0.9.1",
+    "sass-loader": "^3.2.0",
+    "style-loader": "^0.13.1",
+    "webpack": "^1.13.1"
+  },
+  "devDependencies": {
+    "webpack-dev-server": "^1.14.1"
+  }
+}

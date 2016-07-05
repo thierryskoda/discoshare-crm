@@ -1,0 +1,10 @@
+.modal {
+    &--full_route {
+        .modal-dialog {
+            width: 80%;
+        }
+    }
+    &-big {
+        width: 80%;
+    }
+}

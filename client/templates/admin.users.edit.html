@@ -1,0 +1,48 @@
+<button ng-click="generate_random();"> Generate random </button>
+
+<div class="content__body content__body--with_padding">
+  <form class="row row--column d_form" name="form" ng-submit="submit_user_form(form)">
+
+   <div class="col-xs-12 col-md-6 d_form__item">
+      <label> Name </label>
+      <input type="text" name="" ng-model="user.name" required placeholder="Enter your name">
+      <span class="d_form__errors"> {{errors.name}} </span>
+    </div>
+
+    <div class="col-xs-12 col-md-6 d_form__item">
+      <label> Email </label>
+      <input type="email" name="" ng-model="user.email" required placeholder="Enter your email">
+      <span class="d_form__errors"> {{errors.email}} </span>
+    </div>
+
+    <div class="col-xs-12 col-md-6 d_form__item">
+      <label> Password </label>
+      <input type="password" name="" ng-model="user.password" placeholder="Enter your password">
+      <span class="d_form__errors"> {{errors.password}} </span>
+    </div>
+
+    <div class="col-xs-12 col-md-6 d_form__item">
+        <label> Location </label>
+        <input type="text" name="" ng-model="user.location" required placeholder="Enter your location">
+        <span class="d_form__errors"> {{errors.location}} </span>
+    </div>
+
+    <div class="col-xs-12 col-md-6 d_form__item">
+      <label> Term </label>
+      <select class="" ng-model="user.term" ng-options="term as term for term in terms">
+        <option value=""> Select one </option>
+      </select>
+    </div>
+
+    <div class="col-xs-12 col-md-6 d_form__item">
+        <label style="width:auto"> Role </label>
+        Sale <input style="width:auto; margin-right:10px;" type="radio" name="gender" value="sale" checked ng-model="user.role">
+        Admin <input style="width:auto" type="radio" name="gender" value="admin" ng-model="user.role">
+    </div>
+
+
+    <div class="col-xs-12 col-md-6 d_form__item">
+        <button type="submit"> Save user </button>
+    </div>
+  </form>
+</div>

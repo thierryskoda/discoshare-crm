@@ -1,0 +1,12 @@
+.DS_Store
+reload-uwsgi
+venv
+var
+docs
+
+node_modules/
+build/
+style.css
+
+npm-debug.log
+

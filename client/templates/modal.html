@@ -1,0 +1,14 @@
+<!-- <div class="modal"> -->
+    <div map-lazy-load="https://maps.google.com/maps/api/js" map-lazy-load-params="{{googleMapsUrl}}" style="height:100%;">
+        <ng-map class="" zoom="14" center="maps_options.center" ng-if="render_map" style="height:500px;">
+            <directions
+            draggable="false"
+            panel="directions-panel"
+            travel-mode="{{maps_options.travelMode}}"
+            waypoints="{{maps_options.wayPoints}}"
+            origin="{{origin}}"
+            destination="{{maps_options.destination}}">
+            </directions>
+        </ng-map>
+    </div>
+<!-- </div> -->
