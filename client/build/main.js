@@ -90796,14 +90796,18 @@
 	  console.log("LoginController");
 	  $scope.user = {};
 	  $scope.errors = {};
+	  $scope.is_loading = false;
 
 	  $scope.login = function (user) {
+	    $scope.is_loading = true;
 	    Auth.login(user, function (err) {
 	      console.log("ERROR:", err);
 	    }).then(function () {
 	      // Logged in, redirect to home
+	      $scope.is_loading = false;
 	      $state.go('main.routes');
 	    }).catch(function (err) {
+	      $scope.is_loading = false;
 	      $scope.errors.other = err.message;
 	    });
 	  };
@@ -90936,7 +90940,7 @@
 /* 34 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"login\">\n\t<form class=\"login__wrapper\">\n\t\t<div class=\"form_group\">\n\t\t\t<label>Email</label>\n\t\t\t<input type=\"email\" name=\"\" ng-model=\"user.email\">\n\t\t</div>\n\t\t<div class=\"form_group\">\n\t\t\t<label>Password</label>\n\t\t\t<input type=\"password\" name=\"\" ng-model=\"user.password\">\n\t\t</div>\n\n        <!--error-->\n        <div class=\"form-group has-error\">\n          <p class=\"help-block\" ng-show=\"form.email.$error.required && form.password.$error.required && submitted\">\n             Please enter your email and password.\n          </p>\n          <p class=\"help-block\" ng-show=\"form.email.$error.email && submitted\">\n             Please enter a valid email.\n          </p>\n\n          <p class=\"help-block\">{{ errors.other }}</p>\n        </div>\n\n\t\t<button ng-click=\"login(user);\"> Login </button>\n\t</form>\n</div>\n";
+	module.exports = "<div class=\"login\">\n\t<form class=\"login__wrapper\">\n\t\t<div class=\"form_group\">\n\t\t\t<label>Email</label>\n\t\t\t<input type=\"email\" name=\"\" ng-model=\"user.email\">\n\t\t</div>\n\t\t<div class=\"form_group\">\n\t\t\t<label>Password</label>\n\t\t\t<input type=\"password\" name=\"\" ng-model=\"user.password\">\n\t\t</div>\n\n        <!--error-->\n        <div class=\"form-group has-error\">\n          <p class=\"help-block\" ng-show=\"form.email.$error.required && form.password.$error.required && submitted\">\n             Please enter your email and password.\n          </p>\n          <p class=\"help-block\" ng-show=\"form.email.$error.email && submitted\">\n             Please enter a valid email.\n          </p>\n\n          <p class=\"help-block\">{{ errors.other }}</p>\n        </div>\n\n\t\t<div class=\"loader\" ng-show=\"is_loading\"></div>\n\t\t<button ng-click=\"login(user);\"> Login </button>\n\t</form>\n</div>\n";
 
 /***/ },
 /* 35 */
