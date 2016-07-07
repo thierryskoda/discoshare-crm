@@ -122,7 +122,7 @@
 		envServiceProvider.config({
 			domains: {
 				development: ['localhost'],
-				production: ['https://discoshare-crm.herokuapp.com']
+				production: ['discoshare-crm.herokuapp.com']
 			},
 			vars: {
 				development: {
@@ -182,6 +182,7 @@
 	});
 
 	app.run(function ($rootScope, $location, $state, Auth, envService, singletonService) {
+		console.log("test:", envService.read('endpoint'));
 		if (navigator.geolocation) {
 			window.onload = function () {
 				var startPos;
@@ -90912,7 +90913,7 @@
 	    login: function login(user, callback) {
 	      var cb = callback || angular.noop;
 	      var deferred = $q.defer();
-
+	      console.log("test:", envService.read('endpoint'));
 	      $http.post(envService.read('endpoint') + '/auth/local', {
 	        email: user.email,
 	        password: user.password
