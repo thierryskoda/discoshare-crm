@@ -40,7 +40,8 @@
     	"extract-text-webpack-plugin": "^1.0.1",
     	"ng-table": "^1.0.0",
     	"ngmap": "^1.17.1",
-    	"body-parser": "^1.14.2"
+    	"body-parser": "^1.14.2",
+    	"webpack": "^1.12.12"
 	},
  	"devDependencies": {
 	    "webpack-dev-server": "^1.14.1"
