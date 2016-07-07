@@ -40,6 +40,11 @@
     	"extract-text-webpack-plugin": "^1.0.1",
     	"ng-table": "^1.0.0",
     	"ngmap": "^1.17.1",
+    	"html-loader": "^0.4.3",
+    	"node-sass": "^3.7.0",
+    	"postcss-loader": "^0.9.1",
+    	"sass-loader": "^3.2.0",
+    	"style-loader": "^0.13.1",
     	"body-parser": "^1.14.2",
     	"webpack": "^1.12.12",
     	"autoprefixer": "^6.3.6"
