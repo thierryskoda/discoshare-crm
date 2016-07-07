@@ -122,7 +122,7 @@
 		envServiceProvider.config({
 			domains: {
 				development: ['localhost'],
-				production: ['https://discoshare-checkout.herokuapp.com']
+				production: ['https://discoshare-crm.herokuapp.com']
 			},
 			vars: {
 				development: {
