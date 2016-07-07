@@ -1,5 +1,3 @@
-import 'angular-toastr/dist/angular-toastr.min.css';
-
 import angular from 'angular';
 import ngCookies from 'angular-cookies';
 import ngResource from 'angular-resource';
@@ -11,6 +9,7 @@ import angularGoogleMap from 'angular-google-maps';
 import ngmap from 'ngmap';
 import 'angular-modal-service';
 import toastr from 'angular-toastr';
+
 // import modalService from 'angular-modal-service';
 
 import common from './common/common';

@@ -74,7 +74,7 @@ app.controller('ModalRouteDetailController', ($scope, route, config, $uibModalIn
 /*
 	RoutesController
 */
-app.controller('RoutesController', function($scope, $state, $http, envService, routes, ModalService, $uibModal) {
+app.controller('RoutesController', function($scope, $state, $http, envService, routes, ModalService, $uibModal, toastr) {
 	console.log("RoutesController : ", routes);
 	$scope.routes = (Array.isArray(routes)) ? routes : routes.data;
 	$scope.is_searching_routes = false;
@@ -140,7 +140,7 @@ app.controller('RoutesController', function($scope, $state, $http, envService, r
 		});
 
 		modalInstance.result.then((lead_details) => {
-			$route
+			toastr.success("Success update");
 		});
 	}
 });

@@ -8,7 +8,6 @@ app.factory('Auth', function Auth($location, $rootScope, $http, User, $cookieSto
     if($cookieStore.get('token')) {
       currentUser = User.get();
     }
-
     return {
 
       /**

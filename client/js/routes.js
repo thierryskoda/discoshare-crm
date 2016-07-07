@@ -6,7 +6,8 @@ var app = angular.module(module.exports, [
   require('./controllers/MainController'),
   require('./controllers/RoutesController'),
   require('./controllers/LoginController'),
-  require('./controllers/AdminController')
+  require('./controllers/AdminController'),
+  require('./controllers/HistoryController')
 ]);
 
 app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
@@ -85,6 +86,18 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider, $http
     .state('main.admin.users', {
       url: ROOT_URL + '/users',
       template: require('../templates/admin.users.html'),
+      authenticate : true
+    })
+    .state('main.history', {
+      url: ROOT_URL + '/history',
+      template: require('../templates/history.html'),
+      controller: 'HistoryController',
+      authenticate : true
+    })
+    .state('main.history.test', {
+      url: ROOT_URL + '/history/test',
+      template: require('../templates/test.html'),
+      controller: 'HistoryController',
       authenticate : true
     })
 

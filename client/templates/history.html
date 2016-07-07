@@ -1,0 +1,38 @@
+<div class="content__header">
+	<div class="content__header__left col s12">
+		<span class="content__header__left__title">sssHistory</span><br>
+		<span class="content__header__left__today"> From a long long time ago</span>
+	</div>
+	<div class="content__header__right col s12">
+		<a ui-sref="main.history.test">test</a>
+	</div>
+</div>
+
+<ui-view></ui-view>
+
+<div class="content__body">
+	<table class="responstable">
+		<tr>
+			<th> Name </th>
+			<th> Address</th>
+			<th>City</th>
+			<th>Type of business</th>
+			<th>Status</th>
+			<th>Details</th>
+			<th>Actions</th>
+		</tr>
+
+		<tr ng-repeat="history in histories">
+			<td>{{route.name}}</td>
+			<td>{{route.address}}</td>
+			<td>{{route.city}}</td>
+			<td>{{route.term}}</td>
+			<td>{{route.status}}</td>
+			<td>{{route.notes}}</td>
+			<td>
+				<button ng-click="add_note_to_route(route);">Add</button>
+			</td>
+		</tr>
+	</table>
+
+</div>
