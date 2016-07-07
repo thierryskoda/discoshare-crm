@@ -92,17 +92,17 @@
 
 	var _common2 = _interopRequireDefault(_common);
 
-	var _routes = __webpack_require__(23);
+	var _routes = __webpack_require__(25);
 
 	var _routes2 = _interopRequireDefault(_routes);
 
-	var _services = __webpack_require__(40);
+	var _services = __webpack_require__(42);
 
 	var _services2 = _interopRequireDefault(_services);
 
-	__webpack_require__(49);
+	__webpack_require__(51);
 
-	var _indexNocss = __webpack_require__(51);
+	var _indexNocss = __webpack_require__(53);
 
 	var _indexNocss2 = _interopRequireDefault(_indexNocss);
 
@@ -85673,7 +85673,7 @@
 	// import Navbar from './navbar/navbar'
 	module.exports = "app.common";
 
-	var commonModule = angular.module(module.exports, [__webpack_require__(19), __webpack_require__(21)]);
+	var commonModule = angular.module(module.exports, [__webpack_require__(19), __webpack_require__(21), __webpack_require__(23)]);
 
 /***/ },
 /* 19 */
@@ -85775,22 +85775,173 @@
 
 	'use strict';
 
-	__webpack_require__(24);
+	Object.defineProperty(exports, "__esModule", {
+	     value: true
+	});
+
+	var _loader = __webpack_require__(24);
+
+	var _loader2 = _interopRequireDefault(_loader);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	module.exports = "app.common.loader";
+
+	var loaderModule = angular.module(module.exports, []);
+
+	loaderModule.directive('loader', function ($state, $rootScope) {
+	     return {
+	          restrict: 'E',
+	          replace: true,
+	          template: _loader2.default,
+	          link: function link(scope, element) {
+	               $rootScope.$on('$stateChangeStart', function (event, currentRoute, previousRoute) {
+	                    if (previousRoute) return;
+	                    $timeout(function () {
+	                         element.removeClass('ng-hide');
+	                    });
+	               });
+
+	               $rootScope.$on('$stateChangeSuccess', function () {
+	                    element.addClass('ng-hide');
+	               });
+
+	               // var checkmarkIdPrefix = "loadingCheckSVG-";
+	               // var checkmarkCircleIdPrefix = "loadingCheckCircleSVG-";
+	               // var verticalSpacing = 50;
+	               //
+	               // function shuffleArray(array) {
+	               //     for (var i = array.length - 1; i > 0; i--) {
+	               //         var j = Math.floor(Math.random() * (i + 1));
+	               //         var temp = array[i];
+	               //         array[i] = array[j];
+	               //         array[j] = temp;
+	               //     }
+	               //     return array;
+	               // }
+	               //
+	               // function createSVG(tag, properties, opt_children) {
+	               //   var newElement = document.createElementNS("http://www.w3.org/2000/svg", tag);
+	               //   var prop;
+	               //   for(prop in properties) {
+	               //     newElement.setAttribute(prop, properties[prop]);
+	               //   }
+	               //   if (opt_children) {
+	               //     opt_children.forEach(function(child) {
+	               //       newElement.appendChild(child);
+	               //     })
+	               //   }
+	               //   return newElement;
+	               // }
+	               //
+	               // function createPhraseSvg(phrase, yOffset) {
+	               //   var text = createSVG("text", {
+	               //     fill: "white",
+	               //     x: 50,
+	               //     y: yOffset,
+	               //     "font-size": 18,
+	               //     "font-family": "Arial"
+	               //   });
+	               //   text.appendChild(document.createTextNode(phrase + "..."));
+	               //   return text;
+	               // }
+	               // function createCheckSvg(yOffset, index) {
+	               //   var check = createSVG("polygon", {
+	               //     points: "21.661,7.643 13.396,19.328 9.429,15.361 7.075,17.714 13.745,24.384 24.345,9.708 ",
+	               //     fill: "rgba(255,255,255,1)",
+	               //     id: checkmarkIdPrefix + index
+	               //   });
+	               //   var circle_outline = createSVG("path", {
+	               //     d: "M16,0C7.163,0,0,7.163,0,16s7.163,16,16,16s16-7.163,16-16S24.837,0,16,0z M16,30C8.28,30,2,23.72,2,16C2,8.28,8.28,2,16,2 c7.72,0,14,6.28,14,14C30,23.72,23.72,30,16,30z",
+	               //     fill: "white"
+	               //   })
+	               //   var circle = createSVG("circle", {
+	               //     id: checkmarkCircleIdPrefix + index,
+	               //     fill: "rgba(255,255,255,0)",
+	               //     cx: 16,
+	               //     cy: 16,
+	               //     r: 15
+	               //   })
+	               //   var group = createSVG("g", {
+	               //     transform: "translate(10 " + (yOffset - 20) + ") scale(.9)"
+	               //   }, [circle, check, circle_outline]);
+	               //   return group;
+	               // }
+	               //
+	               // function addPhrasesToDocument(phrases) {
+	               //   phrases.forEach(function(phrase, index) {
+	               //     var yOffset = 30 + verticalSpacing * index;
+	               //     document.getElementById("phrases").appendChild(createPhraseSvg(phrase, yOffset));
+	               //     document.getElementById("phrases").appendChild(createCheckSvg(yOffset, index));
+	               //   });
+	               // }
+	               //
+	               // function easeInOut(t) {
+	               //   var period = 200;
+	               //   return (Math.sin(t / period + 100) + 1) /2;
+	               // }
+	               //
+	               //
+	               //
+	               //   var phrases = ["Preparing your info", "Feeding the unicorn", "Getting a cup of coffee", "Reading a book", "Feeding the dog"];
+	               //   addPhrasesToDocument(phrases);
+	               //   var start_time = new Date().getTime();
+	               //   var upward_moving_group = document.getElementById("phrases");
+	               //   upward_moving_group.currentY = 0;
+	               //   var checks = phrases.map(function(_, i) {
+	               //     return {check: document.getElementById(checkmarkIdPrefix + i), circle: document.getElementById(checkmarkCircleIdPrefix + i)};
+	               //   });
+	               //   function animateLoading() {
+	               //     var now = new Date().getTime();
+	               //     upward_moving_group.setAttribute("transform", "translate(0 " + upward_moving_group.currentY + ")");
+	               //     upward_moving_group.currentY -= 1.35 * easeInOut(now);
+	               //     checks.forEach(function(check, i) {
+	               //       var color_change_boundary = - i * verticalSpacing + verticalSpacing + 15;
+	               //       if (upward_moving_group.currentY < color_change_boundary) {
+	               //         var alpha = Math.max(Math.min(1 - (upward_moving_group.currentY - color_change_boundary + 15)/30, 1), 0);
+	               //         check.circle.setAttribute("fill", "rgba(255, 255, 255, " + alpha + ")");
+	               //         var check_color = [Math.round(255 * (1-alpha) + 120 * alpha), Math.round(255 * (1-alpha) + 154 * alpha)];
+	               //         check.check.setAttribute("fill", "rgba(255, " + check_color[0] + "," + check_color[1] + ", 1)");
+	               //       }
+	               //     })
+	               //     if (now - start_time < 30000 && upward_moving_group.currentY > -710) {
+	               //       requestAnimationFrame(animateLoading);
+	               //     }
+	               //   }
+	          }
+	     };
+	});
+
+	exports.default = loaderModule;
+
+/***/ },
+/* 24 */
+/***/ function(module, exports) {
+
+	module.exports = "<div class=\"container container_loader\">\n  <div class=\"loader\" style=\"font-size:10px;\"> </div>\n</div>\n";
+
+/***/ },
+/* 25 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	__webpack_require__(26);
 
 	module.exports = 'app.routes';
-	var app = angular.module(module.exports, ['ui.router', __webpack_require__(25), __webpack_require__(26), __webpack_require__(29), __webpack_require__(30), __webpack_require__(31)]);
+	var app = angular.module(module.exports, ['ui.router', __webpack_require__(27), __webpack_require__(28), __webpack_require__(31), __webpack_require__(32), __webpack_require__(33)]);
 
 	app.config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
 	  var ROOT_URL = '';
 
 	  $stateProvider.state('login', {
 	    url: ROOT_URL + '/login',
-	    template: __webpack_require__(32),
+	    template: __webpack_require__(34),
 	    controller: 'LoginController'
 	  }).state('main', {
 	    abstract: true,
 	    url: ROOT_URL + '',
-	    template: __webpack_require__(33),
+	    template: __webpack_require__(35),
 	    controller: 'MainController',
 	    authenticate: true,
 	    resolve: {
@@ -85800,7 +85951,7 @@
 	    }
 	  }).state('main.routes', {
 	    url: ROOT_URL + '/routes',
-	    template: __webpack_require__(34),
+	    template: __webpack_require__(36),
 	    controller: 'RoutesController',
 	    authenticate: true,
 	    resolve: {
@@ -85811,7 +85962,7 @@
 	  }).state('main.admin', {
 	    abstract: true,
 	    url: ROOT_URL + '/admin',
-	    template: __webpack_require__(35),
+	    template: __webpack_require__(37),
 	    controller: 'AdminController',
 	    authenticate: true,
 	    admin: true,
@@ -85822,7 +85973,7 @@
 	    }
 	  }).state('main.admin.new', {
 	    url: ROOT_URL + '/users/new',
-	    template: __webpack_require__(36),
+	    template: __webpack_require__(38),
 	    controller: 'NewUserController',
 	    authenticate: true,
 	    resolve: {
@@ -85832,7 +85983,7 @@
 	    }
 	  }).state('main.admin.edit', {
 	    url: ROOT_URL + '/users/{user_id}',
-	    template: __webpack_require__(36),
+	    template: __webpack_require__(38),
 	    controller: 'EditUserController',
 	    authenticate: true,
 	    resolve: {
@@ -85846,16 +85997,16 @@
 	    }
 	  }).state('main.admin.users', {
 	    url: ROOT_URL + '/users',
-	    template: __webpack_require__(37),
+	    template: __webpack_require__(39),
 	    authenticate: true
 	  }).state('main.history', {
 	    url: ROOT_URL + '/history',
-	    template: __webpack_require__(38),
+	    template: __webpack_require__(40),
 	    controller: 'HistoryController',
 	    authenticate: true
 	  }).state('main.history.test', {
 	    url: ROOT_URL + '/history/test',
-	    template: __webpack_require__(39),
+	    template: __webpack_require__(41),
 	    controller: 'HistoryController',
 	    authenticate: true
 	  });
@@ -85868,7 +86019,7 @@
 	});
 
 /***/ },
-/* 24 */
+/* 26 */
 /***/ function(module, exports) {
 
 	/**
@@ -90449,7 +90600,7 @@
 	})(window, window.angular);
 
 /***/ },
-/* 25 */
+/* 27 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -90464,16 +90615,16 @@
 	});
 
 /***/ },
-/* 26 */
+/* 28 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modal = __webpack_require__(27);
+	var _modal = __webpack_require__(29);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _modalDetails = __webpack_require__(28);
+	var _modalDetails = __webpack_require__(30);
 
 	var _modalDetails2 = _interopRequireDefault(_modalDetails);
 
@@ -90620,19 +90771,19 @@
 	});
 
 /***/ },
-/* 27 */
+/* 29 */
 /***/ function(module, exports) {
 
 	module.exports = "<!-- <div class=\"modal\"> -->\n    <div map-lazy-load=\"https://maps.google.com/maps/api/js\" map-lazy-load-params=\"{{googleMapsUrl}}\" style=\"height:100%;\">\n        <ng-map class=\"\" zoom=\"14\" center=\"maps_options.center\" ng-if=\"render_map\" style=\"height:500px;\">\n            <directions\n            draggable=\"false\"\n            panel=\"directions-panel\"\n            travel-mode=\"{{maps_options.travelMode}}\"\n            waypoints=\"{{maps_options.wayPoints}}\"\n            origin=\"{{origin}}\"\n            destination=\"{{maps_options.destination}}\">\n            </directions>\n        </ng-map>\n    </div>\n<!-- </div> -->\n";
 
 /***/ },
-/* 28 */
+/* 30 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-header\">\n    <h3 class=\"modal-title\">Route details</h3>\n</div>\n    <div class=\"modal-body\">\n        <form class=\"row row--column d_form\" name=\"route_detail_form\" ng-submit=\"submit_route_detail(route_detail_form)\">\n            <div class=\"col s12 d_form__item\">\n                <label> Status </label>\n                <select class=\"\" ng-model=\"lead.status\" ng-options=\"status.slug as status.title for status in statuses\" required>\n                    <option value=\"\"> Select one </option>\n                </select>\n            </div>\n\n            <div class=\"col s12 d_form__item\">\n                <label> Note </label>\n                <textarea placeholder=\"Enter your note here\" rows=\"10\" ng-model=\"lead.note\"></textarea>\n                <span class=\"d_form__errors\"> {{errors.email}} </span>\n            </div>\n\n            <div class=\"col s12 d_form__item\">\n                <button type=\"submit\"> Save </button>\n                <button class=\"\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n            </div>\n        </form>\n    </div>\n    <pre>{{lead|json}}</pre>\n</div>\n";
 
 /***/ },
-/* 29 */
+/* 31 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -90659,7 +90810,7 @@
 	});
 
 /***/ },
-/* 30 */
+/* 32 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -90755,7 +90906,7 @@
 	});
 
 /***/ },
-/* 31 */
+/* 33 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -90782,84 +90933,84 @@
 	});
 
 /***/ },
-/* 32 */
+/* 34 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"login\">\n\t<form class=\"login__wrapper\">\n\t\t<div class=\"form_group\">\n\t\t\t<label>Email</label>\n\t\t\t<input type=\"email\" name=\"\" ng-model=\"user.email\">\n\t\t</div>\n\t\t<div class=\"form_group\">\n\t\t\t<label>Password</label>\n\t\t\t<input type=\"password\" name=\"\" ng-model=\"user.password\">\n\t\t</div>\n\n        <!--error-->\n        <div class=\"form-group has-error\">\n          <p class=\"help-block\" ng-show=\"form.email.$error.required && form.password.$error.required && submitted\">\n             Please enter your email and password.\n          </p>\n          <p class=\"help-block\" ng-show=\"form.email.$error.email && submitted\">\n             Please enter a valid email.\n          </p>\n\n          <p class=\"help-block\">{{ errors.other }}</p>\n        </div>\n\n\t\t<button ng-click=\"login(user);\"> Login </button>\n\t</form>\n</div>\n";
 
 /***/ },
-/* 33 */
+/* 35 */
 /***/ function(module, exports) {
 
 	module.exports = " <header></header>\n <div class=\"main\">\n    <navbar></navbar>\n    <ui-view class=\"content\" ></ui-view>\n </div>\n <pre ng-show=\"debug\"> {{ currentUser | json }} </pre>\n";
 
 /***/ },
-/* 34 */
+/* 36 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"content__header\">\n\t<div class=\"content__header__left col s12\">\n\t\t<span class=\"content__header__left__title\">Today's Route</span><br>\n\t\t<span class=\"content__header__left__today\"> 2016 June 19</span>\n\t</div>\n\t<div class=\"content__header__right col s12\">\n\t\t<a ng-click=\"show_full_route()\" style=\"flex:1\"> See full routes</a>\n        <button ng-show=\"!is_searching_routes\" ng-click=\"generates_lead()\"> Generates leads </button>\n        <div ng-show=\"is_searching_routes\" class=\"loader\"></div>\n\t</div>\n</div>\n\n<div class=\"content__body\">\n\n    <table class=\"responstable\">\n        <tr>\n            <th> Name </th>\n            <th> Address</th>\n            <th>City</th>\n            <th>Type of business</th>\n            <th>Status</th>\n            <th>Details</th>\n            <th>Actions</th>\n        </tr>\n\n        <tr ng-repeat=\"route in routes\">\n            <td>{{route.name}}</td>\n            <td>{{route.address}}</td>\n            <td>{{route.city}}</td>\n            <td>{{route.term}}</td>\n            <td>{{route.status}}</td>\n            <td>{{route.notes}}</td>\n            <td>\n                <button ng-click=\"add_note_to_route(route);\">Add</button>\n            </td>\n        </tr>\n    </table>\n\n</div>\n\n";
 
 /***/ },
-/* 35 */
+/* 37 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"content__header\">\n\t<div class=\"content__header__left col s12\">\n\t\t<span class=\"content__header__left__title\">Admin panel</span><br>\n\t\t<span class=\"content__header__left__today\"> </span>\n\t</div>\n\t<div class=\"content__header__right col s12\">\n\t\t<button ng-click=\"goTo('main.admin.new', {user_id:'new'})\"> Add user </button>\n        <button ng-click=\"goTo('main.admin.users')\"> List users </button>\n\t</div>\n</div>\n\n<ui-view></ui-view>\n\n\n\n\n\n\n\n";
 
 /***/ },
-/* 36 */
+/* 38 */
 /***/ function(module, exports) {
 
 	module.exports = "<button ng-click=\"generate_random();\"> Generate random </button>\n\n<div class=\"content__body content__body--with_padding\">\n  <form class=\"row row--column d_form\" name=\"form\" ng-submit=\"submit_user_form(form)\">\n\n   <div class=\"col-xs-12 col-md-6 d_form__item\">\n      <label> Name </label>\n      <input type=\"text\" name=\"\" ng-model=\"user.name\" required placeholder=\"Enter your name\">\n      <span class=\"d_form__errors\"> {{errors.name}} </span>\n    </div>\n\n    <div class=\"col-xs-12 col-md-6 d_form__item\">\n      <label> Email </label>\n      <input type=\"email\" name=\"\" ng-model=\"user.email\" required placeholder=\"Enter your email\">\n      <span class=\"d_form__errors\"> {{errors.email}} </span>\n    </div>\n\n    <div class=\"col-xs-12 col-md-6 d_form__item\">\n      <label> Password </label>\n      <input type=\"password\" name=\"\" ng-model=\"user.password\" placeholder=\"Enter your password\">\n      <span class=\"d_form__errors\"> {{errors.password}} </span>\n    </div>\n\n    <div class=\"col-xs-12 col-md-6 d_form__item\">\n        <label> Location </label>\n        <input type=\"text\" name=\"\" ng-model=\"user.location\" required placeholder=\"Enter your location\">\n        <span class=\"d_form__errors\"> {{errors.location}} </span>\n    </div>\n\n    <div class=\"col-xs-12 col-md-6 d_form__item\">\n      <label> Term </label>\n      <select class=\"\" ng-model=\"user.term\" ng-options=\"term as term for term in terms\">\n        <option value=\"\"> Select one </option>\n      </select>\n    </div>\n\n    <div class=\"col-xs-12 col-md-6 d_form__item\">\n        <label style=\"width:auto\"> Role </label>\n        Sale <input style=\"width:auto; margin-right:10px;\" type=\"radio\" name=\"gender\" value=\"sale\" checked ng-model=\"user.role\">\n        Admin <input style=\"width:auto\" type=\"radio\" name=\"gender\" value=\"admin\" ng-model=\"user.role\">\n    </div>\n\n\n    <div class=\"col-xs-12 col-md-6 d_form__item\">\n        <button type=\"submit\"> Save user </button>\n    </div>\n  </form>\n</div>\n";
 
 /***/ },
-/* 37 */
+/* 39 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"content__body\">\n  <table class=\"responstable\">\n        <tr>\n            <th> Name </th>\n            <th> Email</th>\n            <th> Location </th>\n            <th> Term </th>\n            <th> Sales </th>\n            <th> Notes </th>\n            <th> Action </th>\n        </tr>\n\n        <tr ng-repeat=\"user in users\">\n            <td>{{user.name}}</td>\n            <td>{{user.email}}</td>\n            <td>{{user.location}}</td>\n            <td>{{user.term}}</td>\n            <td>{{user.number_of_sales}}</td>\n            <td>\n                <span ng-show=\"user.notes.length > 0\">{{user.notes}}</span>\n                <span ng-show=\"user.notes.length === 0\"> <em>No notes</em> </span>\n            </td>\n            <td>\n                <button ng-click=\"delete_user(user);\">Delete</button>\n                <button ng-click=\"goTo('main.admin.edit', {user_id: user._id})\"> Edit </button>\n            </td>\n        </tr>\n    </table>\n</div>\n\n\n";
 
 /***/ },
-/* 38 */
+/* 40 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"content__header\">\n\t<div class=\"content__header__left col s12\">\n\t\t<span class=\"content__header__left__title\">sssHistory</span><br>\n\t\t<span class=\"content__header__left__today\"> From a long long time ago</span>\n\t</div>\n\t<div class=\"content__header__right col s12\">\n\t\t<a ui-sref=\"main.history.test\">test</a>\n\t</div>\n</div>\n\n<ui-view></ui-view>\n\n<div class=\"content__body\">\n\t<table class=\"responstable\">\n\t\t<tr>\n\t\t\t<th> Name </th>\n\t\t\t<th> Address</th>\n\t\t\t<th>City</th>\n\t\t\t<th>Type of business</th>\n\t\t\t<th>Status</th>\n\t\t\t<th>Details</th>\n\t\t\t<th>Actions</th>\n\t\t</tr>\n\n\t\t<tr ng-repeat=\"history in histories\">\n\t\t\t<td>{{route.name}}</td>\n\t\t\t<td>{{route.address}}</td>\n\t\t\t<td>{{route.city}}</td>\n\t\t\t<td>{{route.term}}</td>\n\t\t\t<td>{{route.status}}</td>\n\t\t\t<td>{{route.notes}}</td>\n\t\t\t<td>\n\t\t\t\t<button ng-click=\"add_note_to_route(route);\">Add</button>\n\t\t\t</td>\n\t\t</tr>\n\t</table>\n\n</div>\n";
 
 /***/ },
-/* 39 */
+/* 41 */
 /***/ function(module, exports) {
 
 	module.exports = "test\n";
 
 /***/ },
-/* 40 */
+/* 42 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _translation = __webpack_require__(41);
+	var _translation = __webpack_require__(43);
 
 	var _translation2 = _interopRequireDefault(_translation);
 
-	var _auth = __webpack_require__(42);
+	var _auth = __webpack_require__(44);
 
 	var _auth2 = _interopRequireDefault(_auth);
 
-	var _user = __webpack_require__(43);
+	var _user = __webpack_require__(45);
 
 	var _user2 = _interopRequireDefault(_user);
 
-	var _lead = __webpack_require__(44);
+	var _lead = __webpack_require__(46);
 
 	var _lead2 = _interopRequireDefault(_lead);
 
-	var _route = __webpack_require__(45);
+	var _route = __webpack_require__(47);
 
 	var _route2 = _interopRequireDefault(_route);
 
-	var _modal = __webpack_require__(46);
+	var _modal = __webpack_require__(48);
 
 	var _modal2 = _interopRequireDefault(_modal);
 
-	var _singleton = __webpack_require__(48);
+	var _singleton = __webpack_require__(50);
 
 	var _singleton2 = _interopRequireDefault(_singleton);
 
@@ -90869,7 +91020,7 @@
 	var app = angular.module(module.exports, [_translation2.default, _auth2.default, _user2.default, _lead2.default, _route2.default, _modal2.default, _singleton2.default]);
 
 /***/ },
-/* 41 */
+/* 43 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -90888,7 +91039,7 @@
 	});
 
 /***/ },
-/* 42 */
+/* 44 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -91036,7 +91187,7 @@
 	});
 
 /***/ },
-/* 43 */
+/* 45 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -91064,7 +91215,7 @@
 	});
 
 /***/ },
-/* 44 */
+/* 46 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -91079,7 +91230,7 @@
 	});
 
 /***/ },
-/* 45 */
+/* 47 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -91165,12 +91316,12 @@
 	});
 
 /***/ },
-/* 46 */
+/* 48 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
 
-	var _modalConfirm = __webpack_require__(47);
+	var _modalConfirm = __webpack_require__(49);
 
 	var _modalConfirm2 = _interopRequireDefault(_modalConfirm);
 
@@ -91219,13 +91370,13 @@
 	});
 
 /***/ },
-/* 47 */
+/* 49 */
 /***/ function(module, exports) {
 
 	module.exports = "<div class=\"modal-header\">\n    <h3 class=\"modal-title\">{{title}}</h3>\n</div>\n    <div class=\"modal-body\">\n       <p>{{body}}</p>\n    </div>\n<div class=\"modal-footer\">\n    <button class=\"\" type=\"button\" ng-click=\"ok()\">Confirm</button>\n    <button class=\"\" type=\"button\" ng-click=\"cancel()\">Cancel</button>\n</div>\n";
 
 /***/ },
-/* 48 */
+/* 50 */
 /***/ function(module, exports) {
 
 	'use strict';
@@ -91270,16 +91421,16 @@
 	});
 
 /***/ },
-/* 49 */
+/* 51 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(50);
+	__webpack_require__(52);
 
 	module.exports = 'ui.bootstrap';
 
 
 /***/ },
-/* 50 */
+/* 52 */
 /***/ function(module, exports) {
 
 	/*
@@ -98631,14 +98782,14 @@
 	angular.module('ui.bootstrap.typeahead').run(function() {!angular.$$csp().noInlineStyle && !angular.$$uibTypeaheadCss && angular.element(document).find('head').prepend('<style type="text/css">[uib-typeahead-popup].dropdown-menu{display:block;}</style>'); angular.$$uibTypeaheadCss = true; });
 
 /***/ },
-/* 51 */
+/* 53 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(52);
 	__webpack_require__(54);
 	__webpack_require__(56);
-	__webpack_require__(57);
 	__webpack_require__(58);
+	__webpack_require__(59);
+	__webpack_require__(60);
 
 	var MODULE_NAME = 'ui.bootstrap.module.modal';
 
@@ -98648,10 +98799,10 @@
 
 
 /***/ },
-/* 52 */
+/* 54 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(53);
+	__webpack_require__(55);
 
 	var MODULE_NAME = 'ui.bootstrap.module.position';
 
@@ -98661,7 +98812,7 @@
 
 
 /***/ },
-/* 53 */
+/* 55 */
 /***/ function(module, exports) {
 
 	angular.module('ui.bootstrap.position', [])
@@ -99267,10 +99418,10 @@
 
 
 /***/ },
-/* 54 */
+/* 56 */
 /***/ function(module, exports, __webpack_require__) {
 
-	__webpack_require__(55);
+	__webpack_require__(57);
 
 	var MODULE_NAME = 'ui.bootstrap.module.stackedMap';
 
@@ -99280,7 +99431,7 @@
 
 
 /***/ },
-/* 55 */
+/* 57 */
 /***/ function(module, exports) {
 
 	angular.module('ui.bootstrap.stackedMap', [])
@@ -99339,7 +99490,7 @@
 	  });
 
 /***/ },
-/* 56 */
+/* 58 */
 /***/ function(module, exports) {
 
 	angular.module("uib/template/modal/backdrop.html", []).run(["$templateCache", function($templateCache) {
@@ -99354,7 +99505,7 @@
 
 
 /***/ },
-/* 57 */
+/* 59 */
 /***/ function(module, exports) {
 
 	angular.module("uib/template/modal/window.html", []).run(["$templateCache", function($templateCache) {
@@ -99370,7 +99521,7 @@
 
 
 /***/ },
-/* 58 */
+/* 60 */
 /***/ function(module, exports) {
 
 	angular.module('ui.bootstrap.modal', ['ui.bootstrap.stackedMap', 'ui.bootstrap.position'])

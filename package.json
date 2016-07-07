@@ -12,7 +12,7 @@
   	"license": "MIT",
  	"scripts": {
     	"start": "node server.js",
-    	"dev"  : "webpack --watch --progress --debug",
+    	"dev"  : "node server.js & webpack --watch --progress --debug",
     	"build": "webpack --progress"
   	},
   	"author": "",
