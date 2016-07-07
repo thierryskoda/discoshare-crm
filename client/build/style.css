@@ -920,7 +920,7 @@ a, button  {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  height: 100%; }
+  height: 100vh; }
 
 /*.container__loader svg {
 	height: 130px;
