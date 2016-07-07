@@ -20,7 +20,7 @@ app.factory('Auth', function Auth($location, $rootScope, $http, User, $cookieSto
       login: function(user, callback) {
         var cb = callback || angular.noop;
         var deferred = $q.defer();
-
+        console.log("test:", envService.read('endpoint');
         $http.post(envService.read('endpoint') + '/auth/local', {
           email: user.email,
           password: user.password

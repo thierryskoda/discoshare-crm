@@ -41,7 +41,7 @@ app.config(function(envServiceProvider) {
 	envServiceProvider.config({
 		domains: {
 			development: ['localhost'],
-			production: ['https://discoshare-crm.herokuapp.com']
+			production: ['discoshare-crm.herokuapp.com']
 		},
 		vars: {
 			development: {
@@ -104,6 +104,7 @@ app.constant('config', {
 
 
 app.run(function ($rootScope, $location, $state, Auth, envService, singletonService) {
+	console.log("test:", envService.read('endpoint');
 	if (navigator.geolocation) {
  		 window.onload = function() {
   			var startPos;
