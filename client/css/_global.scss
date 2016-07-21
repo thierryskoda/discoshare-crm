@@ -51,8 +51,7 @@ button {
         }
 
         &__left {
-            /*float: left;*/
-            /*width: 50%;*/
+        	flex: 1;
             padding: 10px 0px;
 
             &__title {
@@ -62,6 +61,11 @@ button {
             &__date {
                 font-size: 15px;
             }
+
+            &__item {
+            	margin: 10px 0px;
+            	display: block;
+            }
         }
 
         &__right {
@@ -69,10 +73,14 @@ button {
             /*width: 50%;*/
             display: flex;
             justify-content: flex-end;
-            align-items: center;
+            flex-direction: column;
             padding: 10px 0px;
             justify-content: space-between;
-            width: 100%;
+            text-align: left;
+
+            &__item {
+            	margin: 10px 0px;
+            }
 
             &__full_routes {
                 font-size: 15px;

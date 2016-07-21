@@ -104,7 +104,6 @@ app.constant('config', {
 
 
 app.run(function ($rootScope, $location, $state, Auth, envService, singletonService) {
-	console.log("test:", envService.read('endpoint'));
 	if (navigator.geolocation) {
  		 window.onload = function() {
   			var startPos;

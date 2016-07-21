@@ -182,7 +182,6 @@
 	});
 
 	app.run(function ($rootScope, $location, $state, Auth, envService, singletonService) {
-		console.log("test:", envService.read('endpoint'));
 		if (navigator.geolocation) {
 			window.onload = function () {
 				var startPos;
@@ -85745,7 +85744,6 @@
 	        replace: true,
 	        template: _header2.default,
 	        link: function link(scope, elem, attrs) {
-
 	            scope.user = Auth.getCurrentUser();
 	            scope.is_open = false;
 
@@ -90707,6 +90705,7 @@
 		console.log("RoutesController : ", routes);
 		$scope.routes = Array.isArray(routes) ? routes : routes.data;
 		$scope.is_searching_routes = false;
+		$scope.location = "";
 
 		// ModalService.showModal({
 		//   template: modalTemplate,
@@ -90739,14 +90738,16 @@
 
 		$scope.generates_lead = function () {
 			$scope.is_searching_routes = true;
-			var term = new Date().getTime() % 2 == 0 ? "bars" : "restaurants";
+			//let term = (new Date().getTime() % 2 == 0) ? "bars" : "restaurants";
+			var term = "restaurants";
 
-			$http.get(envService.read('endpoint') + '/api/leads?term=' + term + '&location=montreal').success(function (result) {
+			$http.get(envService.read('endpoint') + '/api/leads?term=' + term + '&location=' + $scope.location).success(function (result) {
 				console.log("RESULT:", result);
 				$scope.is_searching_routes = false;
 				$scope.routes = result;
 			}).error(function (error) {
 				console.log("ERROR:", error);
+				toastr.error(error);
 				$scope.is_searching_routes = false;
 			});
 		};
@@ -90952,7 +90953,7 @@
 /* 36 */
 /***/ function(module, exports) {
 
-	module.exports = "<div class=\"content__header\">\n\t<div class=\"content__header__left col s12\">\n\t\t<span class=\"content__header__left__title\">Today's Route</span><br>\n\t\t<span class=\"content__header__left__today\"> 2016 June 19</span>\n\t</div>\n\t<div class=\"content__header__right col s12\">\n\t\t<a ng-click=\"show_full_route()\" style=\"flex:1\"> See full routes</a>\n        <button ng-show=\"!is_searching_routes\" ng-click=\"generates_lead()\"> Generates leads </button>\n        <div ng-show=\"is_searching_routes\" class=\"loader\"></div>\n\t</div>\n</div>\n\n<div class=\"content__body\">\n\n    <table class=\"responstable\">\n        <tr>\n            <th> Name </th>\n            <th> Address</th>\n            <th>City</th>\n            <th>Type of business</th>\n            <th>Status</th>\n            <th>Details</th>\n            <th>Actions</th>\n        </tr>\n\n        <tr ng-repeat=\"route in routes\">\n            <td>{{route.name}}</td>\n            <td>{{route.address}}</td>\n            <td>{{route.city}}</td>\n            <td>{{route.term}}</td>\n            <td>{{route.status}}</td>\n            <td>{{route.notes}}</td>\n            <td>\n                <button ng-click=\"add_note_to_route(route);\">Add</button>\n            </td>\n        </tr>\n    </table>\n\n</div>\n\n";
+	module.exports = "<div class=\"content__header\">\n\t<div class=\"content__header__left\">\n\t\t<span class=\"content__header__left__title content__header__left__item\">Today's Route</span>\n\t\t<span class=\"content__header__left__today content__header__left__item\"> 2016 June 19</span>\n\t\t<a class=\"content__header__left__item\" ng-click=\"show_full_route()\"> See full routes</a>\n\t</div>\n\t<div class=\"content__header__right\">\n    \t<label class=\"content__header__right__item\" ng-show=\"!is_searching_routes\"> The location </label>\n   \t\t<input class=\"content__header__right__item\" type=\"text\" name=\"\" ng-model=\"location\" ng-show=\"!is_searching_routes\">\n   \t\t<button class=\"content__header__right__item\" ng-show=\"!is_searching_routes\" ng-click=\"generates_lead()\"> Generates leads </button>\n        <div ng-show=\"is_searching_routes\" class=\"loader\"></div>\n\t</div>\n</div>\n\n<div class=\"content__body\">\n\n    <table class=\"responstable\">\n        <tr>\n            <th> Name </th>\n            <th> Address</th>\n            <th>City</th>\n            <th>Type of business</th>\n            <th>Phone number</th>\n            <th>Status</th>\n            <th>Details</th>\n            <th>Actions</th>\n        </tr>\n\n        <tr ng-repeat=\"route in routes\">\n            <td>{{route.name}}</td>\n            <td>{{route.address}}</td>\n            <td>{{route.city}}</td>\n            <td>{{route.term}}</td>\n            <td>{{route.phone_number}}</td>\n            <td>{{route.status}}</td>\n            <td>{{route.notes}}</td>\n            <td>\n                <button ng-click=\"add_note_to_route(route);\">Add</button>\n            </td>\n        </tr>\n    </table>\n\n</div>\n\n";
 
 /***/ },
 /* 37 */
@@ -91068,7 +91069,6 @@
 	    login: function login(user, callback) {
 	      var cb = callback || angular.noop;
 	      var deferred = $q.defer();
-	      console.log("test:", envService.read('endpoint'));
 	      $http.post(envService.read('endpoint') + '/auth/local', {
 	        email: user.email,
 	        password: user.password

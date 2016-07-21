@@ -78,6 +78,7 @@ app.controller('RoutesController', function($scope, $state, $http, envService, r
 	console.log("RoutesController : ", routes);
 	$scope.routes = (Array.isArray(routes)) ? routes : routes.data;
 	$scope.is_searching_routes = false;
+	$scope.location = "";
 
 	// ModalService.showModal({
 	//   template: modalTemplate,
@@ -111,9 +112,10 @@ app.controller('RoutesController', function($scope, $state, $http, envService, r
 
 	$scope.generates_lead = () => {
 		$scope.is_searching_routes = true;
-		let term = (new Date().getTime() % 2 == 0) ? "bars" : "restaurants";
+		//let term = (new Date().getTime() % 2 == 0) ? "bars" : "restaurants";
+		let term = "restaurants";
 
-		$http.get(envService.read('endpoint') + '/api/leads?term=' + term + '&location=montreal')
+		$http.get(envService.read('endpoint') + '/api/leads?term=' + term + '&location=' + $scope.location)
 			.success(function(result) {
 				console.log("RESULT:",result);
 				$scope.is_searching_routes = false;
@@ -121,6 +123,7 @@ app.controller('RoutesController', function($scope, $state, $http, envService, r
 			})
 			.error(function(error) {
 				console.log("ERROR:",error);
+				toastr.error(error);
 				$scope.is_searching_routes = false;
 			})
 	};

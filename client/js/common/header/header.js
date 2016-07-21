@@ -10,8 +10,6 @@ headerModule.directive('header', function($state, Auth) {
         replace: true,
         template: template,
         link: function(scope, elem, attrs) {
-
-
             scope.user = Auth.getCurrentUser();
             scope.is_open = false;
 
